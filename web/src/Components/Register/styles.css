@@ -1,0 +1,98 @@
+
+@keyframes pganimation {
+   from {
+    opacity: 0%;
+   }
+
+   to {
+    opacity: 100%;
+    transition: all 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+   }
+
+
+}
+
+.cad-form {
+    
+    
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    min-height: 100vh;
+    min-width: 1285px;
+    
+}
+
+.cad-side {
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.cad-form form {
+    display: flex;
+    flex-direction: column;
+   
+
+    align-items: center;
+ 
+    animation-name: pganimation;
+    animation-duration: 1s;
+    
+   
+}
+
+.cad-form .cad-side h1 {
+    margin-bottom: 30px;
+    font-size: 55px;
+    color: #313131;
+}
+
+
+.cad-form form #username, .cad-side form #emailcad, .cad-side form #passconfimation {
+    margin-bottom: 5px;
+}
+
+
+.usernameLbl, .emailLbl, .passlbl {
+    font-size: 12px;
+    color: #d43636;
+    align-self: flex-start;
+    margin-bottom: 25px;
+    font-weight: bold;
+    margin-left: 5px;
+    
+}
+
+.emailLbl, .passlbl {
+    margin-bottom: 6px;
+}
+
+
+
+.name-inputs {
+    display: flex;
+    max-width: 350px;
+}
+
+#firstname, #lastname {
+    width: calc(50% - 5px);
+    padding: 10px;
+}
+
+.name-inputs #firstname {
+    margin-right: 8px;
+}
+
+ .cad-form span {
+    color: #d43636;
+    align-self: flex-start;
+    display: block;
+    font-size: 13px;
+    margin: 0 0 10px;
+    font-weight: bold;
+  }

@@ -1,0 +1,15 @@
+.sidecolor {
+   
+    background: #38338f;
+    width: 65%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 10px 100px;
+    line-height: 50px;
+    
+}
+
