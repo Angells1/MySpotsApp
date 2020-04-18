@@ -76,16 +76,21 @@
 
 .name-inputs {
     display: flex;
+    flex-direction: row;
+    column-gap: 8px;
     max-width: 350px;
+   
+   
 }
 
 #firstname, #lastname {
-    width: calc(50% - 5px);
+    /* width: calc(50% - 5px); */
     padding: 10px;
+    
 }
 
 .name-inputs #firstname {
-    margin-right: 8px;
+    /* margin-right: 8px; */
 }
 
  .cad-form span {

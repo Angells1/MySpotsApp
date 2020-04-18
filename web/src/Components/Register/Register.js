@@ -7,8 +7,8 @@ import api from '../../services/api'
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import { store } from 'react-notifications-component';
-import { Input, Form } from "@rocketseat/unform";
-import { Scope } from "@unform/core";
+import { Input, Form, Scope } from "@rocketseat/unform";
+
 
 import SideColor from '../SideColor/SideColor'
 
@@ -158,8 +158,8 @@ function Register() {
 
         <Form onSubmit={createUser} schema={schema}>
             
-           
-            {/* <Scope > */}
+          
+            
             <div className="name-inputs">
             <Input 
             type="text" 
@@ -183,7 +183,8 @@ function Register() {
             required
             />
             </div>
-            {/* </Scope> */}
+            
+          
             
             <Input 
             type="email" 
