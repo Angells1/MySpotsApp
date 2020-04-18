@@ -8,7 +8,7 @@ import Register from './Components/Register/Register';
 
 import Profile from './Components/Profile/Profile'
 import ConfigPage from './Components/ConfigPage/ConfigPage'
-
+import ConfigInformation from './Components/ConfigPage/Components/ConfigInformation/ConfigInformation'
 
 
 
@@ -19,7 +19,7 @@ import ConfigPage from './Components/ConfigPage/ConfigPage'
 
 
 
-    const PrivateRoute = ({ component:Component, ...rest}) => {
+     function PrivateRoute ({ component:Component, ...rest}) {
        
         return (
              <Route
@@ -78,7 +78,7 @@ import ConfigPage from './Components/ConfigPage/ConfigPage'
                 <PrivateRoute path="/spots" component={Spots}/>
                 <PrivateRoute path="/profile" component={Profile}/>
                 <PrivateRoute path="/config" component={ConfigPage}/> 
-
+                <PrivateRoute path="/config/information" component={ConfigInformation}/> 
                   
 
                 <PrivateSessions path="/register" redirect="/spots" component={Register}/>

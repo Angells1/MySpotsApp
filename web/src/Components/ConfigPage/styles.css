@@ -1,0 +1,109 @@
+.config-page {
+
+    padding: 40px 60px;
+  width: 100%;
+  height: 100vh;
+
+}
+
+
+.config-container {
+
+    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.8);
+    /* padding: 80px 40px; */
+    display: flex;
+    height: 100%;
+     /* border: 5px solid #ec5e8e;  */
+  
+}
+
+.config-container .config-content {
+    border-left: 5px solid #e94b65;
+    width: calc(100% - 300px);
+    /* background: #0f111b; */
+    background: #d6d6d6;
+    
+}
+
+
+.config-side {
+  
+    width: 300px;
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: #1a1e30; */
+    background: #202020;
+}
+
+.config-side .config-usr-img {
+    width: 150px;
+    min-height: 150px;
+    min-width: 150px;
+    height: 150px;
+    background: url('https://clips-media-assets2.twitch.tv/AT-cm%7C453564047-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-top: 40px;
+}
+
+
+
+
+.config-side .config-side-list {
+    margin-top: 30px;
+    
+    width: 100%;
+  
+}
+
+.config-side .config-side-list .option-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    /* margin: 0 10px; */
+    
+ 
+    
+}
+
+.config-side-list .option-list .option-list-item {
+    align-self: flex-start;
+
+   
+   
+    width: 100%;
+    transition: all 0.3s linear;
+    
+}
+
+
+
+
+.config-side-list .option-list .option-list-item .list-link {
+    color: #fff;
+    font-size: 15px;
+  
+    display: inline-block;
+    width: 100%;
+    padding: 15px 20px;
+
+    transition: background 0.15s linear;
+}
+
+.config-side-list .option-list .option-list-item .list-link:hover {
+    background: #bf1750;
+    
+}
+
+
+
+
+.config-container .config-side .config-usr-name {
+    margin-top: 20px;
+    color: #ffffff;
+    border-bottom: 2px solid #bf1750;
+
+}
