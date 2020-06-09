@@ -19,7 +19,7 @@ routes.post('/api/spot', middleware.checkToken, ProductController.store);
 
 routes.delete('/api/spot', middleware.checkToken, ProductController.destroy);
 
-routes.get('/api/auth/token', middleware.checkToken)
+routes.get('/api/auth/token', middleware.validateToken)
 
 routes.post('/api/blob/image', UserController.uploadImageUsr)
 

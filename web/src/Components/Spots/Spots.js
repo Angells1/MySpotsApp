@@ -13,7 +13,7 @@ import api from '../../services/api'
 return (
     <>
  
-    <NavBar history={history}/>
+    <NavBar/>
     <h1>Spots</h1>
  
     </>

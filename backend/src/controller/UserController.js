@@ -14,6 +14,8 @@ module.exports = {
 
     async store (request, response) {
 
+      const trx = await connection.transaction();
+
         let {
              email, 
              pass, 
@@ -23,20 +25,12 @@ module.exports = {
              gender, 
              username
             } = request.body;
- 
 
-            console.log(email)
-            console.log(pass)
-            console.log(firstname)
-            console.log(lastname)
-            console.log(borndate)
-            console.log(gender)
-            console.log(username)
         
          const avatarurl = 'https://developmentpjct.blob.core.windows.net/imagescontainer/iconfinder_unknown_403017.png' 
 
 
-    
+            
         let user = await connection('user')
         .where('username', username)
         .orWhere("email", email)
@@ -48,11 +42,14 @@ module.exports = {
        // console.log(user)
 
           if(!user){
+            let password;
+            let id;
+            let user;
 
-            bcrypt.hash(pass, 12, async function(err, hash) {
-              const password = hash
+            bcrypt.hash(pass, 8, async function(err, hash) {
+              password = hash;
               id = crypto.randomBytes(4).toString('HEX');
-              const user = await connection('user').insert({
+              user = await connection('user').insert({
               id,
               email,
               password,
@@ -64,10 +61,23 @@ module.exports = {
               username
            });
 
+
+           
+             response.json({
+               id,
+               email,
+               password_hash: hash,
+               firstname,
+               lastname,
+               borndate,
+               gender,
+               avatarurl,
+               username
+             });
             });
 
         
-         return response.json(user);
+         return 
        }
         
        
@@ -93,7 +103,6 @@ module.exports = {
 
         console.log(username)
         console.log(email)
-        console.log('pinto')
 
         const user = await connection('user')
         .where('username', username)
@@ -166,7 +175,7 @@ module.exports = {
           bcrypt.compare(pass, password, function(err, res) {
             if(res) {
 
-              let token = jwt.sign({email: email},
+              let token = jwt.sign({id},
                 config.secret,
                 { expiresIn: 86400, // expires in 24 hours
                 }
@@ -181,14 +190,18 @@ module.exports = {
                 firstname: firstname,
                 lastname: lastname,
                 id: id,
-                token: token,
               }
             })
     
 
             } else {
 
-              response.status(403).send('Incorrect username or password')
+              response.json({
+                status: 403,
+                sucess: 'false',
+                message: 'Password incorrect'
+
+              });
 
             } 
           });
@@ -273,6 +286,7 @@ module.exports = {
         .first();
 
 
+ 
         if(avatarurl) {
           
           return response.status(200).json({

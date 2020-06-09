@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/server.js",
+    "pretest": "NODE_ENV=development knex migrate:latest",
+    "test": "NODE_ENV=development jest --detectOpenHandles",
+    "posttest": "NODE_ENV=development knex migrate:rollback --all"
   },
   "dependencies": {
     "@rocketseat/unform": "^1.6.2",
@@ -29,5 +32,11 @@
     "uuid": "^7.0.3",
     "validatorjs": "^3.18.1",
     "yup": "^0.28.3"
+  },
+  "devDependencies": {
+    "bluebird": "^3.7.2",
+    "jest": "^26.0.1",
+    "sqlite3": "^4.2.0",
+    "supertest": "^4.0.2"
   }
 }

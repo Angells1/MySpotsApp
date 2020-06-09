@@ -4,9 +4,11 @@ import './styles.css';
 
 
 import api from '../../services/api'
+
 import ReactNotification from 'react-notifications-component'
-import 'react-notifications-component/dist/theme.css'
 import { store } from 'react-notifications-component';
+import * as Notifications from '../Notifications/notifications'
+
 import { Input, Form, Scope } from "@rocketseat/unform";
 
 
@@ -23,21 +25,7 @@ function Register() {
       
        
        
-    const sucessCad = {
-        title: "Sucess!",
-        message: "Cadastro feito com Sucesso",
-        type: "success",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animated", "fadeIn"],
-        animationOut: ["animated", "fadeOut"],
-        dismiss: {
-          duration: 2500,
-          onScreen: true
-            }
-      };
-
-
+   
 
 
 
@@ -115,7 +103,7 @@ function Register() {
              await api.post('/api/sessions', user).then(response => {
 
                 console.log(response)
-                store.addNotification(sucessCad);
+                store.addNotification(Notifications.sucessCad);
                 
                 setTimeout(() => { 
                     history.push('/')

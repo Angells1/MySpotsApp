@@ -38,7 +38,43 @@ let checkToken = (req, res, next) => {
 
 
 
+let validateToken = (req, res) => {
+    console.log('cheguei')
+    let token = req.headers['x-acess-token'] || req.headers['authorization'];
 
+    if(token.startsWith('Bearer ')) {
+        token = token.slice(7, token.lenght);
+
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if(err){
+                return res.status(200).json({
+                    sucess: false,
+                    message: 'Token is not valid'
+                })
+            }else {
+                req.decoded = decoded;
+                res.status(200).json({
+                    sucess: true,
+                    message: 'Token is valid'
+                })
+            }
+        });
+
+
+    }
+
+    if(token) {
+
+
+    }else {
+        return res.json({
+            sucess: false,
+            message: 'Auth token is not supplied'
+        });
+    }
+
+
+}
 
 
 
@@ -112,6 +148,7 @@ const signup = (req, res, next) => {
 
 module.exports = {
     checkToken,
+    validateToken,
     notFound,
     errorHandler,
     signup    

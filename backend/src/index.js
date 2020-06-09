@@ -1,22 +1,66 @@
+
+
 const express = require('express');
-const routes = require('./routes');
-const cors = require('cors');
-const middleware = require('./middleware')
+//const routes = require('./routes');
+//const cors = require('cors');
+//const middleware = require('./middleware')
 
-const app = express(); 
+class AppController {
 
+    constructor(){
 
-
-
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
-app.use(express.json());
-app.use(routes);
-
-app.use(middleware.notFound);
-app.use(middleware.errorHandler);    
+        this.express = express();
+        this.middlewares();
+        this.routes();
+        this.handlers();
 
 
+     } 
 
-app.listen(3333);
+     middlewares(){
+         this.express.use(express.json());
+
+         
+
+        
+      
+     }
+
+
+     routes() {
+         this.express.use(require('./routes'));
+     }
+
+
+     handlers() {
+         // app.use(middleware.notFound);
+        // app.use(middleware.errorHandler);
+        this.express.use(require('./middleware').notFound);     
+        this.express.use(require('./middleware').errorHandler); 
+     }
+
+}
+
+module.exports = new AppController().express;
+
+
+// const app = express(); 
+
+
+
+
+// app.use(cors({
+//     origin: 'http://localhost:3000'
+// }));
+
+
+// app.use(express.json());
+// app.use(routes);
+
+// app.use(middleware.notFound);
+// app.use(middleware.errorHandler);  
+  
+
+
+
+// app.listen(3333);

@@ -1,20 +1,22 @@
 import React, {useContext, useState, useEffect} from 'react';
 import '../NavBar/styles.css'
-import {Link, useHistory, Redirect} from 'react-router-dom'
+import {Link, useHistory, Redirect, withRouter} from 'react-router-dom'
 import { FiPower } from 'react-icons/fi';
 import api from '../../services/api'
 
+import AuthContext from '../../contexts/auth'
 
 function NavBar({history}){
 
     const [showMenu, setShowmenu] = useState(false)
     const [avatarImg, setAvatarImg] = useState();
-
+    const {user} = useContext(AuthContext); 
+    console.log(user)
 
     async function avatarLoad() {
 
-        const id = localStorage.getItem('id')
-        console.log(id)
+        const id = user.id
+       
         const token = localStorage.getItem('token')
        const response = await api.post('/api/blob/avatar', {id}, {
 
@@ -52,8 +54,7 @@ function NavBar({history}){
     async function handleShowMenu() {
         showMenu ? setShowmenu(false) : 
         setShowmenu(true)
-        
-
+    
     }
 
     return(
@@ -109,4 +110,4 @@ function NavBar({history}){
 
 }
 
-export default NavBar;
+export default withRouter(NavBar);

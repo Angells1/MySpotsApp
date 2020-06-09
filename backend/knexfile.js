@@ -1,7 +1,23 @@
 // Update with your config settings.
 require('dotenv').config();
+// require('dotenv').config({
+//   path: process.env.NODE_ENV === 'test' ? ".env.test" : ".env"
+// });
 
 module.exports = {
+
+  test: {
+
+    client: 'sqlite3',
+    connection: {
+       // filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite'),   
+        filename:'./__tests__/database.sqlite',
+    },
+    migrations: {
+      directory: './database/migrations'
+    },
+    useNullAsDefault: true,
+  },
 
   development: {
     client: 'pg',
@@ -10,6 +26,7 @@ module.exports = {
       directory: './database/migrations'
     },
     useNullAsDefault: true,
+    
   },
 
   staging: {

@@ -4,53 +4,30 @@ import { Link, useHistory, Redirect } from 'react-router-dom'
 import api from '../../services/api'
 import './styles.css'
 import SideColor from '../SideColor/SideColor'
-
-import ReactNotification from 'react-notifications-component'
-import 'react-notifications-component/dist/theme.css'
 import { store } from 'react-notifications-component';
+import ReactNotification from 'react-notifications-component'
+import * as Notifications from '../Notifications/notifications'
 
+
+
+import AuthContext from '../../contexts/auth'
 
 
 
  const Login = ( {history} ) => {
 
  
-   
+
+  const {isAuthenticated, signIn} = useContext(AuthContext); 
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
     
+    console.log(isAuthenticated)
 
 
- 
-    const Passnotif = {
-        title: "Error!",
-            message: "Email ou Senha Inválidos !",
-            type: "danger",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animated", "fadeIn"],
-            animationOut: ["animated", "fadeOut"],
-            dismiss: {
-              duration: 3000,
-              onScreen: true
-            }
-      };
-  
-      const Emptynotif = {
-        title: "Error!",
-        message: "Prencha os Campos corretamente !",
-        type: "warning",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animated", "fadeIn"],
-        animationOut: ["animated", "fadeOut"],
-        dismiss: {
-          duration: 3000,
-          onScreen: true
-        }
-      };
+
 
       /*const sucessLogin = {
         title: "Sucess!",
@@ -71,7 +48,7 @@ import { store } from 'react-notifications-component';
         e.preventDefault();
 
         if(!email && !pass){
-            store.addNotification(Emptynotif);
+            store.addNotification(Notifications.Emptynotif);
 
         }else {
    
@@ -80,39 +57,31 @@ import { store } from 'react-notifications-component';
               email,
               pass
             }
+
+
+            signIn(user)
        
-           // const response = await api.post('/sessions', user);
+          //  const response = await api.post('/sessions', user);
     
-            await api.post('/api/auth/signin', user).then(response =>{
+            // await api.post('/api/auth/signin', user).then(response =>{
    
-              localStorage.setItem('firstname', response.data.usrinfo.firstname)
-              localStorage.setItem('lastname', response.data.usrinfo.lastname)
-              localStorage.setItem("id", response.data.usrinfo.id)
-              localStorage.setItem("token", response.data.usrinfo.token)
+            //   localStorage.setItem('firstname', response.data.usrinfo.firstname)
+            //   localStorage.setItem('lastname', response.data.usrinfo.lastname)
+            //   localStorage.setItem("id", response.data.usrinfo.id)
+            //   localStorage.setItem("token", response.data.usrinfo.token)
               
-              history.push('/spots')
+            //   history.push('/spots')
                
-            }, (err) => {
-                console.log(err)
-                store.addNotification(Passnotif);
-            });
-           
-            /*if(response.data.token){
-                localStorage.setItem('authToken', response.data.token)
-               
-        
-                   history.push('/spots')
-          
-            } */
-  
-        
-          
+            // }, (err) => {
+            //     console.log(err)
+            //     store.addNotification(Notifications.Passnotif);
+            // });
+
+
+
         }
 
 
-
-        //console.log(response.data.token)
-       // localStorage.setItem('token', response.data.token)
     }
 
     return(

@@ -1,0 +1,16 @@
+import React, {InputHTMLAttributes} from 'react';
+
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+
+    type: string,
+
+}
+
+
+const NavBar: React.FC<InputProps> = ({size, ...rest}) =>{
+    return (</>) 
+}
+
+
+export default NavBar;
