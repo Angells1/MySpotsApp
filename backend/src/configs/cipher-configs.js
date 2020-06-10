@@ -1,4 +1,7 @@
+require('dotenv').config();
+
+
 const data_config = {
     alg : "aes256",
-    sec : "chaves"
+    sec : process.env.CIPHERSEC
 };

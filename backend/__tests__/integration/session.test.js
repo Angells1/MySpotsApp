@@ -20,14 +20,14 @@ describe('Authentication', () => {
 
         const user = {
             id: crypto.randomBytes(4).toString('HEX'),
-            email: 'gabriel.angelsad1234@gmail.com',
-            pass: 'Lallal123',
-            firstname: 'Gabriel',
-            lastname: 'Angelo',
-            borndate: '12/09/2000', 
+            email: 'emailfake1@gmail.com',
+            pass: 'senhaqualquer123',
+            firstname: 'Nome',
+            lastname: 'Sobrenome',
+            borndate: '05/05/1998', 
             gender: 'Male', 
             avatarurl: 'Fake-Avatar-Url',
-            username: 'morninsun123'
+            username: 'username1'
          }
 
 
@@ -58,14 +58,14 @@ describe('Authentication', () => {
 
       const user = {
         id: crypto.randomBytes(4).toString('HEX'),
-        email: 'gabriel.angelsad131@gmail.com',
-        pass: 'Lallal123',
-        firstname: 'Gabriel',
-        lastname: 'Angelo',
-        borndate: '12/09/2000', 
+        email: 'emailfake2@gmail.com',
+        pass: 'senhaqualquer',
+        firstname: 'Nome',
+        lastname: 'Sobrenome',
+        borndate: '04/02/1997', 
         gender: 'Male', 
         avatarurl: 'Fake-Avatar-Url',
-        username: 'morninsun1214'
+        username: 'username2'
      }
 
 
@@ -94,14 +94,14 @@ describe('Authentication', () => {
 
       const user = {
         id: crypto.randomBytes(4).toString('HEX'),
-        email: 'gabriel.angel123d1@gmail.com',
-        pass: 'Lallal123',
-        firstname: 'Gabriel',
-        lastname: 'Angelo',
-        borndate: '12/09/2000', 
+        email: 'emailfake3@gmail.com',
+        pass: 'senhaqualquer',
+        firstname: 'Nome',
+        lastname: 'Sobrenome',
+        borndate: '15/05/1998', 
         gender: 'Male', 
         avatarurl: 'Fake-Avatar-Url',
-        username: 'morninsun123121'
+        username: 'username3'
      }
 
 
@@ -132,8 +132,82 @@ describe('Authentication', () => {
     //    await truncate();
     // });
 
+        it('should be able to acess private routes when authenticated', async () => {
+
+         const user = {
+            id: crypto.randomBytes(4).toString('HEX'),
+            email: 'emailqualquer4@gmail.com',
+            pass: 'senhaqualquer',
+            firstname: 'Nome',
+            lastname: 'Sobrenome',
+            borndate: '05/06/1995', 
+            gender: 'Male', 
+            avatarurl: 'Fake-Avatar-Url',
+            username: 'username4'
+         }
+    
+    
+         const register = await request(app)
+         .post('/api/sessions')
+         .send(user);
+         
         
+         const login = await request(app)
+        .post('/api/auth/signin')
+        .send({
+            email: user.email,
+            pass: user.pass,    
+        })
+   
+      
+         const response = await request(app)
+         .get('/api/spot')
+         .set('Authorization', `Bearer ${login.body.token}`)
+
+         console.log(response)
+         expect(response.status).toBe(200);
+
+        });
  
+
+      it('should not be able to acess private routes without jwt  ', async () => {
+
+         const user = {
+            id: crypto.randomBytes(4).toString('HEX'),
+            email: 'emailqualquer5@gmail.com',
+            pass: 'Lallal123',
+            firstname: 'Nome',
+            lastname: 'Sobrenome',
+            borndate: '07/03/1995', 
+            gender: 'Male', 
+            avatarurl: 'Fake-Avatar-Url',
+            username: 'username5'
+         }
+    
+    
+         const register = await request(app)
+         .post('/api/sessions')
+         .send(user);
+         
+        
+         const login = await request(app)
+        .post('/api/auth/signin')
+        .send({
+            email: user.email,
+            pass: user.pass,    
+        })
+   
+      
+         const response = await request(app)
+         .get('/api/spot')
+         .set('Authorization', `Bearer ikpjasjkfijpsafip`)
+
+ 
+         expect(response.status).toBe(400);
+
+
+      })   
+
 
 })
 

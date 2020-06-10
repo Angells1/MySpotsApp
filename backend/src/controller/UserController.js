@@ -247,7 +247,7 @@ module.exports = {
 
 
       async uploadImageUsr(req, res, next) {
-        const blobSvc = azure.createBlobService("DefaultEndpointsProtocol=https;AccountName=developmentpjct;AccountKey=G+uEW2sjLIvDqXygzAmIEMQN7mZragRUKol0MmVelSzysJYbXJEmDQ8J5/yTp+LuyeGv6dB8dL+UdU5FUMampw==;EndpointSuffix=core.windows.net")
+        const blobSvc = azure.createBlobService()
 
         let filename = uuid().toString() + '.jpg';
         let rawdata = req.body.image;

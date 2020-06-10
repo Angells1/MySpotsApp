@@ -32,18 +32,17 @@ describe('User', () => {
        const response = await request(app)
        .post('/api/sessions')
        .send({
-            email: 'gabriel.anad11231@gmail.com', 
+            email: 'emailqualquer6@gmail.com', 
             pass: 'Lallal123', 
-            firstname: 'Gabriel', 
-            lastname: 'Silva', 
-            borndate: '12/09/2000', 
+            firstname: 'Nome', 
+            lastname: 'Sobrenome', 
+            borndate: '02/01/1998', 
             gender: 'Male', 
-            username: 'Morgsu12213n'
+            username: 'username6'
        })
     
        
-       
-       console.log(response)
+     
 
       const compareHash = await bcrypt.compare('Lallal123', response.body.password_hash)
      

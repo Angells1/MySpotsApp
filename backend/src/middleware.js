@@ -21,6 +21,7 @@ let checkToken = (req, res, next) => {
                 })
             }else {
                 req.decoded = decoded;
+                req.userId = decoded.id;
                 next();
                 // return res.status(200).json({
                 //     sucess: true,
@@ -39,7 +40,7 @@ let checkToken = (req, res, next) => {
 
 
 let validateToken = (req, res) => {
-    console.log('cheguei')
+    
     let token = req.headers['x-acess-token'] || req.headers['authorization'];
 
     if(token.startsWith('Bearer ')) {

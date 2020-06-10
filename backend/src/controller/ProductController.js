@@ -29,6 +29,8 @@ try {
 
   async index (request, response) {
 
+    const {userId} =  request;
+    console.log(userId)
     const spots = await connection('spots').select('*');
     return response.json(spots);
 
