@@ -8,11 +8,11 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules
-bower_components
-package.json
-package-lock.json
-package.json/
+node_modules/
+bower_components/
+
+package-lock.json/
+
 package-lock.json/
 
 *.sublime*

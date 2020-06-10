@@ -1,6 +1,7 @@
 # Sobre
 
 Aplicação criada totalmente para fins de estudo, baseada na aplicação de anuncios Olx.
+Maior parte do desenvolvimento foi feito em live em meu canal da Twitch: https://www.twitch.tv/morninnsun
 
 
 

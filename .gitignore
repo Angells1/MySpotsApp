@@ -113,9 +113,9 @@ dist/
 tmp/
 temp/
 
-package.json
+
 package-lock.json
-package.json/
+
 package-lock.json/
 
 # End of https://www.gitignore.io/api/node
@@ -132,9 +132,9 @@ logs
 *.lock
 node_modules/
 bower_components/
-package.json/
+
 package-lock.json/
-package.json/
+
 package-lock.json/
 
 *.sublime*
