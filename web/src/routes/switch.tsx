@@ -14,6 +14,8 @@ const Routes: React.FC = () => {
 
     async function tokenValidation(token:String | null){
      
+        
+
         const response = await api.get('/api/auth/token', {
 
             headers: {
@@ -22,16 +24,25 @@ const Routes: React.FC = () => {
     
            })
 
+       
+
            console.log(response.data.sucess)
-          return response.data.sucess
+           if(!response.data.sucess){
+               localStorage.clear();
+               window.location.reload();
+               return false;
+           }
+           
+           return true;
     }
    
     //tokenValidation(token);
 
-    if(!token) return <AuthRoutes/>
-
-    return tokenValidation(token) ? <PrivateRoutes/> : <AuthRoutes/>
-
+    if(!token || !tokenValidation(token)) return <AuthRoutes/>
+    
+    else return <PrivateRoutes/>
+    
+  
 };
 
 export default Routes;

@@ -113,7 +113,7 @@ function Register() {
                 
                 
                
-               
+                console.log(err) 
 
 
             })

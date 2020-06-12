@@ -14,9 +14,12 @@ function NavBar({history}){
     console.log(user)
 
     async function avatarLoad() {
-
-        const id = user.id
+        if(!localStorage.getItem('user_info')) return
+        const user = localStorage.getItem('user_info')
+        const {id} = JSON.parse(user);
        
+        console.log(id)
+
         const token = localStorage.getItem('token')
        const response = await api.post('/api/blob/avatar', {id}, {
 
@@ -47,7 +50,7 @@ function NavBar({history}){
             localStorage.clear()
         }
     
-        history.push('/signin')
+       return window.location.reload();
 
     }
 

@@ -14,9 +14,9 @@ import AuthContext from '../../contexts/auth'
 
 
 
- const Login = ( {history} ) => {
+ const Login = (  ) => {
 
- 
+  const history = useHistory();
 
   const {isAuthenticated, signIn} = useContext(AuthContext); 
 
@@ -60,6 +60,7 @@ import AuthContext from '../../contexts/auth'
 
 
             signIn(user)
+            return history.push('/spots')
        
           //  const response = await api.post('/sessions', user);
     
