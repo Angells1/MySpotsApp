@@ -25,9 +25,9 @@ module.exports = {
              gender, 
              username
             } = request.body;
-
+            borndate = '12/09/2000'
         
-         const avatarurl = 'https://developmentpjct.blob.core.windows.net/imagescontainer/iconfinder_unknown_403017.png' 
+         const avatarurl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRN8atFBYGt_MNPCxOgj6pVbMR48TNSwRtVaJ0cs7G_wliZ7CdT&usqp=CAU' 
 
 
             
@@ -61,23 +61,14 @@ module.exports = {
               username
            });
 
-
-           
-             response.json({
-               id,
-               email,
-               password_hash: hash,
-               firstname,
-               lastname,
-               borndate,
-               gender,
-               avatarurl,
-               username
-             });
             });
 
-        
-         return 
+            return response.json({
+              sucess: true,
+              message: "sucessfull"
+            });
+            
+         
        }
         
        

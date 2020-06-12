@@ -48,11 +48,13 @@ let validateToken = (req, res) => {
 
         jwt.verify(token, config.secret, (err, decoded) => {
             if(err){
-                return res.status(200).json({
+                console.log("not valid")
+                return res.json({
                     sucess: false,
                     message: 'Token is not valid'
                 })
             }else {
+                console.log("valid")
                 req.decoded = decoded;
                 res.status(200).json({
                     sucess: true,

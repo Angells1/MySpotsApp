@@ -2,7 +2,7 @@
 
 const express = require('express');
 //const routes = require('./routes');
-//const cors = require('cors');
+const cors = require('cors');
 //const middleware = require('./middleware')
 
 class AppController {
@@ -19,8 +19,7 @@ class AppController {
 
      middlewares(){
          this.express.use(express.json());
-
-         
+        this.express.use(cors())
 
         
       
