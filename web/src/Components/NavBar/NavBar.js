@@ -44,8 +44,8 @@ function NavBar({history}){
 
 
 
-    function handleLogout() {
-
+    function handleLogout(e) {
+        e.preventDefault()
         if(localStorage.getItem('token')){
             localStorage.clear()
         }

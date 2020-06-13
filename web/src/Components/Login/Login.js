@@ -14,19 +14,14 @@ import AuthContext from '../../contexts/auth'
 
 
 
- const Login = (  ) => {
+ const Login = ( { history } ) => {
 
-  const history = useHistory();
+
 
   const {isAuthenticated, signIn} = useContext(AuthContext); 
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-
-    
-    console.log(isAuthenticated)
-
-
 
 
       /*const sucessLogin = {
@@ -60,26 +55,9 @@ import AuthContext from '../../contexts/auth'
 
 
             signIn(user)
-            return history.push('/spots')
-       
-          //  const response = await api.post('/sessions', user);
-    
-            // await api.post('/api/auth/signin', user).then(response =>{
-   
-            //   localStorage.setItem('firstname', response.data.usrinfo.firstname)
-            //   localStorage.setItem('lastname', response.data.usrinfo.lastname)
-            //   localStorage.setItem("id", response.data.usrinfo.id)
-            //   localStorage.setItem("token", response.data.usrinfo.token)
-              
-            //   history.push('/spots')
-               
-            // }, (err) => {
-            //     console.log(err)
-            //     store.addNotification(Notifications.Passnotif);
-            // });
-
-
-
+            
+            
+        
         }
 
 

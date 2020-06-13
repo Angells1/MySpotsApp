@@ -25,6 +25,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         setUser(response.data.usrinfo);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem('user_info', JSON.stringify(response.data.usrinfo))
+        window.location.reload();
         // .then(response =>{
    
         //     // localStorage.setItem('firstname', response.data.usrinfo.firstname)
@@ -42,10 +43,15 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     async function signOut() {
         setUser(null);
+        if(localStorage.getItem('token')){
+            localStorage.clear();
+        }
+     return window.location.reload();
+        
     }
     
     return (
-    <AuthContext.Provider value={{isAuthenticated: !!user, user, signIn, signOut}}>
+    <AuthContext.Provider value={{isAuthenticated: !!localStorage.getItem('user_info'), user, signIn, signOut}}>
         {children}
     </AuthContext.Provider>
 )

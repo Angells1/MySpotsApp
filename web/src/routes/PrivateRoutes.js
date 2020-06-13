@@ -5,7 +5,7 @@ import ConfigPage from '../Components/ConfigPage/ConfigPage'
 import ConfigInformation from '../Components/ConfigPage/Components/ConfigInformation/ConfigInformation'
 import Spots from '../Components/Spots/Spots'
 
-function AuthRoutes () {
+function PrivateRoutes () {
 
     return (
         <BrowserRouter>
@@ -25,4 +25,4 @@ function AuthRoutes () {
 }
 
 
-export default AuthRoutes;
+export default PrivateRoutes;
