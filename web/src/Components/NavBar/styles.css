@@ -1,13 +1,15 @@
 .nav-bar {  
-    background-color: #212436;
+    background-color: #e7e7e7;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 60px;
+    height: 70px;
     width: 100%;
     align-items: center;
     /* box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 1); */
-    border-bottom: 2px solid #ff8ab5;
+    border-top: 7px solid #3c353d;
+  
+   
 }
 
 
@@ -40,17 +42,22 @@ button.btn-logout:hover {
    
     display: flex;
     height: 100%;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    
     cursor: pointer;
     color: #d3d3d3;
     position: relative;
+    font-family: 'Josefin Sans', sans-serif;
+
+    width: 200px;
 }
 
 .nav-usrinfo div.nav-usrimg {
-  
-    width: 48px;
-    height:  48px;
+    
+    
+    width: 50px;
+    height:  50px;
     border-radius: 50%;
     margin: 0 5px;
     background: url('https://clips-media-assets2.twitch.tv/AT-cm%7C453564047-preview.jpg');
@@ -59,11 +66,24 @@ button.btn-logout:hover {
  
 }
 
+.nav-usrinfo span.nav-user-name {
+    padding-top: 2px;
+    font-size: 1.2em;
+    margin-left: 5px;
+    color: #694848;
+    
+    font-weight: bold;
+    text-transform: uppercase;
+
+    /* width: calc(100% - 50px - 5px); */
+
+    
+}
 
 
 
 
-.nav-usrinfo span.nav-usrname {
+.nav-usrinfo span.nav-username-modal {
     font-weight: 700;
     font-size: 13px;
     text-transform: capitalize;

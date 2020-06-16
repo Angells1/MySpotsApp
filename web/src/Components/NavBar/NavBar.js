@@ -71,6 +71,9 @@ function NavBar({history}){
          { backgroundImage: `url(${avatarImg})`}
         }>
         </div>
+        <span className="nav-user-name">
+           {user.firstname}
+        </span>
         {   
             showMenu ? 
             (<div className="open-menu">
@@ -78,7 +81,7 @@ function NavBar({history}){
             <div className="nav-usrimg entermenu-img" style={
          { backgroundImage: `url(${avatarImg})`}}>
             </div>    
-            <span className="nav-usrname">{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</span>
+            <span className="nav-usrname-modal">{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</span>
             </section>
            
                 <ul>

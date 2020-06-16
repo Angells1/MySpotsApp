@@ -49,9 +49,19 @@ export const AuthProvider: React.FC = ({ children }) => {
      return window.location.reload();
         
     }
+
+    function getUser(): any {
+        if(!localStorage.getItem('user_info')){
+            return null;
+        }
+
+        let user: any | null;
+        user = JSON.parse(localStorage.getItem('user_info') || '{}')
+        return user;
+    }
     
     return (
-    <AuthContext.Provider value={{isAuthenticated: !!localStorage.getItem('user_info'), user, signIn, signOut}}>
+    <AuthContext.Provider value={{isAuthenticated: !!localStorage.getItem('user_info'), user: getUser(), signIn, signOut}}>
         {children}
     </AuthContext.Provider>
 )
