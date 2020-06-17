@@ -31,7 +31,7 @@
     "sharp": "^0.25.2",
     "uuid": "^7.0.3",
     "validatorjs": "^3.18.1",
-    "yup": "^0.28.3"
+    "yup": "^0.28.5"
   },
   "devDependencies": {
     "bluebird": "^3.7.2",

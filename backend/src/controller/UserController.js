@@ -8,11 +8,29 @@ let config = require('../config');
 let middleware = require('../middleware');
 const uuid = require('uuid/v1');
 const azure = require('azure-storage');
-
+const Yup = require('yup');
 
 module.exports = {
 
     async store (request, response) {
+
+      const schema = Yup.object().shape({
+        email: Yup.string.required(),
+        pass: Yup.string.required(),
+        pass_confirmation: Yup.string.required().min(6),
+        firstname: Yup.string().required(),
+        lastname: Yup.string().required(),
+        borndate: Yup.date().required(),
+        username: Yup.string().required().min(4).max(12),
+        gender: Yup.string().required(),
+        avatarurl: Yup.string(), 
+      })
+
+
+      if(!(await schema.isValid(req.body))) {
+        return res.status(400).json({error: 'Validation fails'})
+      }
+
 
       const trx = await connection.transaction();
 
