@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import NavBar from '../NavBar/NavBar'
 import './styles.css'
 import { Link, Route, BrowserRouter, Switch, } from 'react-router-dom'
 import ConfigInformation from '../ConfigPage/Components/ConfigInformation/ConfigInformation'
 
+import AuthContext from '../../contexts/auth'
 import ConfigConta from './Components/Conta/Conta'
 
 function Profile({history}) {
 
+    const {user} = useContext(AuthContext); 
 
     return (
         <>
@@ -21,7 +23,7 @@ function Profile({history}) {
             
         </div>
         </Link>
-        <h2 className="config-usr-name">Nome maneiro</h2>
+        <h2 className="config-usr-name">{`${user.firstname} ${user.lastname}`}</h2>
         
         <div className="config-side-list">
             <ul className="option-list">

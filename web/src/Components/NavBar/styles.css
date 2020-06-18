@@ -7,11 +7,67 @@
     width: 100%;
     align-items: center;
     /* box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 1); */
-    border-top: 7px solid #3c353d;
+    border-top: 8px solid #3c353d;
   
    
 }
 
+.nav-bar .nav-menu {
+    list-style-type: none;
+  
+    padding: 0 15px;
+}
+
+.nav-bar .right-nav {
+    display: flex;
+
+}
+
+.nav-menu > ul  {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+   
+
+}
+
+.nav-menu ul li {
+
+    height: 100%;
+
+
+}
+
+.nav-menu > ul li .menu-link {
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 0 15px;
+    color: #3d3333;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   
+    height: 100%;
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.active  {
+    border-bottom: 3px solid #5c5c5c;
+    
+}
+
+.nav-menu > ul li:hover .menu-link{
+    transform: translateY(-1px);
+    filter: brightness(1.8);
+}
 
 
 button.btn-logout {
@@ -49,7 +105,7 @@ button.btn-logout:hover {
     color: #d3d3d3;
     position: relative;
     font-family: 'Josefin Sans', sans-serif;
-
+    border-left: 1px solid #adadad;
     width: 200px;
 }
 
@@ -59,7 +115,7 @@ button.btn-logout:hover {
     width: 50px;
     height:  50px;
     border-radius: 50%;
-    margin: 0 5px;
+    margin: 0 5px 0 15px;
     background: url('https://clips-media-assets2.twitch.tv/AT-cm%7C453564047-preview.jpg');
     background-size: cover;
     background-position: center;
@@ -81,14 +137,6 @@ button.btn-logout:hover {
 }
 
 
-
-
-.nav-usrinfo span.nav-username-modal {
-    font-weight: 700;
-    font-size: 13px;
-    text-transform: capitalize;
-    margin: 0 20px 0 10px;
-}
 
 a { text-decoration: none;}
 
@@ -120,13 +168,15 @@ a { text-decoration: none;}
     animation-name: openMenu;
     animation-duration: 0.8s;
 
-    
+    z-index: 999999;
     border-radius: 8px;
 
 }
 
 
+.open-menu .nav-username-modal {
 
+}
 
 
 .open-menu ul {
@@ -149,9 +199,9 @@ a { text-decoration: none;}
 
 .open-menu ul li .menu-item {
     color: #9c9c9c;
-    font-weight: normal;
-    font-size: 15px;
-   
+    font-weight: bold;
+    font-size: 0.7em;
+    
     padding: 8px;
     
 }
