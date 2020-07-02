@@ -21,7 +21,12 @@ body {
   --moz-osx-font-smoothing: grayscale;
 }
 
+.content-global {
 
+  width: 100%;
+  min-height: calc(100vh - 78px);
+  background-color: #dfdfdf;
+}
 
 .input-global {
   margin: 15px 0;
@@ -51,7 +56,7 @@ body {
   height: 45px;
   border-radius: 8px;
   border: none;
-  background: #ff6060;
+
   background: #2a02af;
   color: #fff;
   font-weight: 700;

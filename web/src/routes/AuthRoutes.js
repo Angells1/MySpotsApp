@@ -11,7 +11,6 @@ function AuthRoutes () {
             <Switch>
            
                 <Redirect from="/" to="/signin" exact/>  
-
                 <Route path="/signin" component={Login}/>
                 <Route path="/register" component={Register}/>
                 <Redirect from="*" to="/signin" exact/>  

@@ -54,13 +54,13 @@ return (
     <>
  
     <NavBar/>
-    <div className="content">
+    <div className="content-global">
 
         <section className="top-highlight">
-            <h1>Destaques</h1>
+              
             <div className="side-highlight">
                
-                    <Link className="side-highlight-btn">Criar Anúncio</Link>
+                    <Link to="/spot/new" className="side-highlight-btn">Criar Anúncio</Link>
               
             </div>
         </section>
@@ -133,14 +133,14 @@ return (
                     <div style={{backgroundImage: `url('https://http2.mlstatic.com/D_NQ_NP_724124-MLB41497991122_042020-V.jpg')` }} className="spot-img"></div>
                     <section className="spot-item-info">
                     <span className="spot-item-title">Ps4 Zerado</span>
-                    <span className="spot-item-price">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(1600)}</span>
+                    <span className="spot-item-price">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(40)}</span>
                     </section>
                 </div>
                 <div className="last-included-item">
                     <div style={{backgroundImage: `url('https://http2.mlstatic.com/D_NQ_NP_724124-MLB41497991122_042020-V.jpg')` }} className="spot-img"></div>
                     <section className="spot-item-info">
                     <span className="spot-item-title">Ps4 Zerado</span>
-                    <span className="spot-item-price">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(1600)}</span>
+                    <span className="spot-item-price">{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(40)}</span>
                     </section>
                 </div>
                 

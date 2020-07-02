@@ -1,0 +1,17 @@
+.spot-cad {
+  
+    width: 750px;
+    height: calc(100vh - 70px);
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+
+.form-cad {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.input-global {
+    background-color: #e7e7e7;
+}
