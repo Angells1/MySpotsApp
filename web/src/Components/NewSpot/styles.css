@@ -14,6 +14,7 @@
 
 .input-global {
     background-color: #e7e7e7;
+    margin: 8px 0 15px;
 }
 
 .desc-textarea {
@@ -24,9 +25,15 @@
     min-width: 100%;
     max-width: 100%;
     padding: 10px;
-    margin: 5px 0;
+    margin: 7px 0;
     font-family: 'Roboto', sans-serif;
     color: #535353;
     font-size: 1em;
+    margin: 5px 0 15px;
 
+}
+
+.desc-textarea:focus {
+    background-color: #ebebeb;
+    transition: 0.3s;
 }

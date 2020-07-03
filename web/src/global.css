@@ -39,6 +39,28 @@ body {
   font-size: 14px;
 }
 
+
+
+.select-global {
+  margin: 15px 0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid #b9b9b9;
+  background-color: #e7e7e7;
+  color: #535353;
+  width: 100%;
+  height: 45px;
+  font-size: 14px;
+}
+
+.lbl-global {
+  font-size: 1.2em;
+  color: #504d4d;
+  font-weight: bold;
+  
+}
+
+
 .input-global:focus {
   background-color: #f0f0f0;
   transition: 0.3s;
@@ -49,6 +71,13 @@ body {
   -webkit-box-shadow: 0 0 0 100px #ffffff inset;
 
 }
+
+.select-global:-webkit-autofill, .select-global:focus:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px #ffffff inset;
+
+}
+
+
 
 .btn-global {
   padding: 10px 15px;
