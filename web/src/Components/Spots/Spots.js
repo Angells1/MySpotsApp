@@ -53,7 +53,7 @@ import 'react-multi-carousel/lib/styles.css';
 return (
     <>
  
-    <NavBar/>
+    {/* <NavBar/> */}
     <div className="content-global">
 
         <section className="top-highlight">

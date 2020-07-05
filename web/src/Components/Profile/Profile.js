@@ -9,7 +9,7 @@ function Profile({history}) {
 
     return (
         <>
-        <NavBar/>
+        {/* <NavBar/> */}
        <h1>config</h1>
         </>
     )

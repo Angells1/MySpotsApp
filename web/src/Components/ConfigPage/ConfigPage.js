@@ -13,7 +13,7 @@ function Profile({history}) {
 
     return (
         <>
-        <NavBar/>
+        {/* <NavBar/> */}
         <div className="config-page">
             
         <div className="config-container">

@@ -5,12 +5,15 @@ import ConfigPage from '../Components/ConfigPage/ConfigPage'
 import ConfigInformation from '../Components/ConfigPage/Components/ConfigInformation/ConfigInformation'
 import Spots from '../Components/Spots/Spots'
 import NewSpot from '../Components/NewSpot/NewSpot';
-
+import NavBar from '../Components/NavBar/NavBar'
 
 function PrivateRoutes () {
 
     return (
+        <>
+        
         <BrowserRouter>
+        <NavBar/>
             <Switch>
 
                 <Route path="/spots" component={Spots}/>
@@ -23,6 +26,7 @@ function PrivateRoutes () {
         
             </Switch>
         </BrowserRouter>
+        </>
     )
 
 
