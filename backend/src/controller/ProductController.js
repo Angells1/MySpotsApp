@@ -64,48 +64,48 @@ try {
 
     async store (request, response) {
 
-      const { name, product_img, description, price, cep, date } = request.body;
-      const user_token = request.headers.authorization;
+      // const { name, product_img, description, price, cep, date } = request.body;
+      // const user_token = request.headers.authorization;
      // return response.json({name, product_img, description, price, city, date});
      
-    ;
+      console.log(request.body)
 
-     const {id:user_id} = await connection('user')
-     .where('email', jwt.decode(user_token).email)
-     .select('id')
-     .first(); 
+    //  const {id:user_id} = await connection('user')
+    //  .where('email', jwt.decode(user_token).email)
+    //  .select('id')
+    //  .first(); 
      
      
    
-     console.log(user_id)
+    //  console.log(user_id)
 
-      const apiResponse = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
-      const {logradouro, bairro, uf} = apiResponse.data;
-      const endereço = logradouro + ', ' + uf;
-
-  
+    //   const apiResponse = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
+    //   const {logradouro, bairro, uf} = apiResponse.data;
+    //   const endereço = logradouro + ', ' + uf;
 
   
 
-       const id = crypto.randomBytes(4).toString('HEX');
+  
 
-      const spot = await connection('spots').insert({
-        id,
-        name,
-        description,
-        price,
-        product_img,
-        date,
-        user_id
+    //    const id = crypto.randomBytes(4).toString('HEX');
+
+    //   const spot = await connection('spots').insert({
+    //     id,
+    //     name,
+    //     description,
+    //     price,
+    //     product_img,
+    //     date,
+    //     user_id
         
-        //se nome da propriedade não for igual ao da variavel
-        //colocar nome original da variavel antes
-    })
+    //     //se nome da propriedade não for igual ao da variavel
+    //     //colocar nome original da variavel antes
+    // })
 
 
-    console.log(spot);
+    // console.log(spot);
     
-    return response.json(spot);
+    // return response.json(spot);
     
     }
 
