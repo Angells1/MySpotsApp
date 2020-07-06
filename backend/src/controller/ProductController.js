@@ -4,6 +4,9 @@ const connection = require('../../database/connection')
 const crypto = require('crypto');
 let jwt = require('jsonwebtoken');
 
+const multer = require('multer')
+
+
 module.exports = {
 
 
@@ -67,9 +70,9 @@ try {
       // const { name, product_img, description, price, cep, date } = request.body;
       // const user_token = request.headers.authorization;
      // return response.json({name, product_img, description, price, city, date});
-     
-      console.log(request.body)
 
+    console.log(request.file)
+    console.log(JSON.parse(request.body.spot))
     //  const {id:user_id} = await connection('user')
     //  .where('email', jwt.decode(user_token).email)
     //  .select('id')

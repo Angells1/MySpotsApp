@@ -2,6 +2,7 @@ const {Router} = require('express');
 const UserController = require('./controller/UserController')
 const ProductController = require('./controller/ProductController');
 const middleware = require('./middleware')
+const upload = require('./configs/multer')
 
 const routes = Router();
 
@@ -15,9 +16,11 @@ routes.get('/api/spot/:id', middleware.checkToken, ProductController.find)
 
 routes.get('/api/spot', middleware.checkToken, ProductController.index);
 
-routes.post('/api/spot', middleware.checkToken, ProductController.store);
+routes.post('/api/spot', middleware.checkToken, upload.single('file'), ProductController.store);
 
 routes.delete('/api/spot', middleware.checkToken, ProductController.destroy);
+
+routes.post('/api/spot/img', middleware.checkToken, upload.single('file'));
 
 routes.get('/api/auth/token', middleware.validateToken)
 
