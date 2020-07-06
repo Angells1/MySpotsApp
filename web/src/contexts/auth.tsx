@@ -23,6 +23,7 @@ export const AuthProvider: React.FC = ({ children }) => {
        const response = await api.post('/api/auth/signin', usersignin)
         console.log(response.data)
         setUser(response.data.usrinfo);
+
         localStorage.setItem("token", response.data.token);
         localStorage.setItem('user_info', JSON.stringify(response.data.usrinfo))
         window.location.reload();

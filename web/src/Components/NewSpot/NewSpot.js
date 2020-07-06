@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import './styles.css';
 import NavBar from '../NavBar/NavBar'
 import api from '../../services/api'
+import AuthContext from '../../contexts/auth'
 
 const NewSpot = () => {
     
@@ -10,6 +11,8 @@ const NewSpot = () => {
     //preço
     //Tipo
     //fotos
+    
+    
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -17,23 +20,52 @@ const NewSpot = () => {
     const [productType, setProductType] = useState('');
     const [uploadedPhotos, setUploadedPhotos] = useState([]);
 
-    console.log(title)
-    console.log(description)
-    console.log(price)
-    console.log(productType)
-    console.log(uploadedPhotos)
 
 
     const fileUpload = async (event) => {
-        event.preventDefault();
-        const data = new FormData();
-        data.append('title', title);
-        data.append('description', description);
-        data.append('price', price);
-        data.append('productType', productType);
-        data.append('file', uploadedPhotos);
+        const token = localStorage.getItem('token');
 
-        await api.post('/api/spot', data).then((resp) => {
+        event.preventDefault();
+   
+        const spot = {
+            title,
+            description,
+            price,
+            productType,
+            
+        }
+       
+        
+   
+        const file = new FormData();
+        file.append('file', uploadedPhotos);
+        file.append('spot', JSON.stringify(spot))
+
+        // await api.post('/api/spot/img', file, 
+
+        //     {
+        //         headers: {
+        //             'Authorization': `Bearer ${token}`,
+        //             'content-type': 'multipart/form-data'
+        //         }
+        //     }
+        // ).then((res) => {
+        //     console.log(res);
+        // }, (err) => {
+        //     console.log(err);
+        // });
+
+
+        
+    
+
+        await api.post('/api/spot', file,
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            
+        }
+        }).then((resp) => {
             console.log(resp)
         }, (err) => console.log(err));
 
@@ -65,7 +97,7 @@ const NewSpot = () => {
 
                 <section className="spot-cad">
                         
-                    <form onSubmit={fileUpload} className="form-cad">
+                    <form onSubmit={fileUpload} className="form-cad" enctype="multipart/form-data">
 
                     <label className="lbl-global" htmlFor="title">Titulo do Anúncio</label>
 
@@ -107,7 +139,9 @@ const NewSpot = () => {
                         <label className="lbl-global" htmlFor="price">Categoria do Produto
                         </label>
 
-                        <select className="select-global" onChange={e => console.log(e.target.selectedIndex)} name="" id="">
+                        <select className="select-global" onChange={e => console.log(e.target.options[e.target.selectedIndex].text)} name="" id="">
+                            <option value="">Slas</option>
+                            <option value="">Slas</option>
                             <option value="">Slas</option>
                         </select>
 
@@ -117,7 +151,7 @@ const NewSpot = () => {
                         style={{margin: '5px 0 15px'}} 
                         type="file" 
                         // value={uploadedPhotos}
-                        onChange={(e) => setUploadedPhotos(e.target.files) }
+                        onChange={(e) => setUploadedPhotos(e.target.files[0]) }
                         name="photos"
                         multiple 
                         id=""

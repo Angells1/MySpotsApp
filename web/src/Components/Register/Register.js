@@ -155,7 +155,7 @@ function Register() {
             id="firstname"
             name="firstname"
             placeholder="Nome"
-            style={{marginRight: '8px'}}
+            style={{marginRight: '4px'}}
             value={firstname}
             onChange={e => setFirstname(e.target.value)}
             required
@@ -165,6 +165,7 @@ function Register() {
             className="input-global"
             id="lastname"
             name="lastname"
+            style={{marginLeft: '4px'}}
             placeholder="Sobrenome"
             value={lastname}
             onChange={e => setLastname(e.target.value)}
