@@ -124,7 +124,7 @@ module.exports = {
         if(user){
           if(user.email && user.username){
             return response.status(409).json({
-              sucess: 'False',
+              sucess: false,
               message: 'User already exists'
             })
           }
@@ -132,15 +132,15 @@ module.exports = {
   
           else if(user.email && !user.username){
             return response.status(409).json({
-              sucess: 'False',
+              sucess: false,
               message: 'Username already exists'
             })
           }
   
   
-          if(!user.email && user.username){
+           if(!user.email && user.username){
             return response.status(409).json({
-              sucess: 'False',
+              sucess: false,
               message: 'Email already exists'
             })
           }
@@ -148,7 +148,7 @@ module.exports = {
 
 
         return response.status(200).json({
-          sucess: 'True'
+          sucess: true
         })
 
 
@@ -207,7 +207,7 @@ module.exports = {
 
               response.json({
                 status: 403,
-                sucess: 'false',
+                sucess: false,
                 message: 'Password incorrect'
 
               });
