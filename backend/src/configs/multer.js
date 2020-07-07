@@ -19,34 +19,37 @@ const path = require("path");
         filename: (req, file, cb) => {
             
             // Setamos o nome do arquivo que vai ser salvado no segundo paramêtro
-            // Apenas concatenei a data atual com o nome original do arquivo, que a biblioteca nos disponibiliza.
-         
+            // Apenas concatenei a data atual com o nome original do arquivo, que a biblioteca nos 
             cb(null, new Date().getTime() + '-' + file.originalname);
             
         },
 
+    }) // FIM DA CONFIGURAÇÃO DE ARMAZENAMENTO
+
+    const upload = (multer({ 
+        storage,
          // Como esses arquivos serão filtrados, quais formatos são aceitos/esperados?
         fileFilter: (req, file, cb) => {
      
-        // Procurando o formato do arquivo em um array com formatos aceitos
-           // A função vai testar se algum dos formatos aceitos do ARRAY é igual ao formato do arquivo.
-        const isAccepted = ['image/png', 'image/jpg', 'image/jpeg'].find( formatoAceito => formatoAceito == file.mimetype );
+            // Procurando o formato do arquivo em um array com formatos aceitos
+            // A função vai testar se algum dos formatos aceitos do ARRAY é igual ao formato do arquivo.
 
-        // O formato do arquivo bateu com algum aceito?
-        if(isAccepted){
-            // Executamos o callback com o segundo argumento true (validação aceita)
-            
+            const isAccepted = ['image/png', 'image/jpg', 'image/jpeg'].find( formatoAceito => formatoAceito == file.mimetype );
+    
+            console.log("luuul")
+            // Se o arquivo não bateu com nenhum aceito, executamos o callback com o segundo valor false (validação falhouo)
+            if(!isAccepted){
+                
+              
+                 return cb(new Error('Only images are allowed'), false);
+            }
+           
+            // O formato do arquivo bateu com algum aceito?
             return cb(null, true);
         }
-        console.log("falhou")
-        // Se o arquivo não bateu com nenhum aceito, executamos o callback com o segundo valor false (validação falhouo)
-        return cb(null, false);
-        }
-        
-        
-    }) // FIM DA CONFIGURAÇÃO DE ARMAZENAMENTO
 
-    const upload = (multer({ storage }));
+    
+    }));
 
 module.exports = upload;
 
