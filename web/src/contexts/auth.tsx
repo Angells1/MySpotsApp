@@ -8,7 +8,7 @@ import api from '../services/api';
 interface AuthContextData {
     isAuthenticated: boolean;
     user: object | null;
-    signIn(usersignin:object): Promise<void>;
+    signIn(usersignin:object): Promise<any>;
     signOut(): void;
 }
 
@@ -19,14 +19,29 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [user, setUser] = useState<Object | null>(null);
     
     async function signIn(usersignin:object) {
-       
-       const response = await api.post('/api/auth/signin', usersignin)
-        console.log(response.data)
-        setUser(response.data.usrinfo);
+     
+        
+       await api.post('/api/auth/signin', usersignin)
+       .then((resp) => {
+           console.log(resp)
+           if(resp.data.sucess){
+            setUser(resp.data.usrinfo);
+            localStorage.setItem("token", resp.data.token);
+            localStorage.setItem('user_info', JSON.stringify(resp.data.usrinfo))
+            
+            window.location.reload();
+           }else {
+               
+           }
 
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem('user_info', JSON.stringify(response.data.usrinfo))
-        window.location.reload();
+        
+       }, (err) => {
+           return err;
+       } ).catch((err) => {
+           console.log(err)
+       })
+       
+      
         // .then(response =>{
    
         //     // localStorage.setItem('firstname', response.data.usrinfo.firstname)

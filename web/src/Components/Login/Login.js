@@ -53,8 +53,16 @@ import AuthContext from '../../contexts/auth'
               pass
             }
 
-
+            console.log(isAuthenticated)
             signIn(user)
+            if(!isAuthenticated){
+              
+              return store.addNotification(Notifications.Passnotif);
+            }
+
+            
+            return store.addNotification(Notifications.sucessCad);
+             
             
             
         
