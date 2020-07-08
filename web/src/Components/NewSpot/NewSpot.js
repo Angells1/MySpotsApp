@@ -139,7 +139,7 @@ const NewSpot = () => {
                         <label className="lbl-global" htmlFor="price">Categoria do Produto
                         </label>
 
-                        <select className="select-global" onChange={e => console.log(e.target.options[e.target.selectedIndex].text)} name="" id="">
+                        <select className="select-global" onChange={e => setProductType(e.target.options[e.target.selectedIndex].text)} name="" id="">
                             <option value="">Slas</option>
                             <option value="">Slas</option>
                             <option value="">Slas</option>

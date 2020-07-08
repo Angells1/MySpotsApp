@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import enterImg from '../../assets/undraw_Login_v483.svg'
+import enterImg from '../../assets/undraw_Mobile_application_mr4r.svg'
 
 
 function SideColor() {
@@ -9,7 +9,7 @@ function SideColor() {
 
         <aside className="sidecolor">
         
-               <img src={enterImg} width="350px" alt=""/>
+               <img src={enterImg} width="600px" alt=""/>
                <h1 className="title-login">Crie seus Anúncios com facilidade em uma
                plataforma amigável.</h1>
         </aside>
