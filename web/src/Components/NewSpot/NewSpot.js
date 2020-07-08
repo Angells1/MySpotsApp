@@ -30,13 +30,13 @@ const NewSpot = () => {
         const spot = {
             title,
             description,
-            price,
+            price: price.slice(3, -3),
             productType,
             
         }
        
         
-   
+        
         const file = new FormData();
         file.append('file', uploadedPhotos);
         file.append('spot', JSON.stringify(spot))
