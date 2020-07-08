@@ -68,26 +68,35 @@ try {
     async store (request, response) {
 
       // const { name, product_img, description, price, cep, date } = request.body;
-      // const user_token = request.headers.authorization;
+      const user_token = request.headers.authorization.slice(7, -1);
      // return response.json({name, product_img, description, price, city, date});
 
-    console.log(request.file)
+    console.log(request.files)
     console.log(JSON.parse(request.body.spot))
+    const req = JSON.parse(request.body.spot);
+
     //  const {id:user_id} = await connection('user')
     //  .where('email', jwt.decode(user_token).email)
     //  .select('id')
     //  .first(); 
+
+    const user_id = jwt.decode(user_token).id;
      
-     
-   
-    //  console.log(user_id)
-
-    //   const apiResponse = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
-    //   const {logradouro, bairro, uf} = apiResponse.data;
-    //   const endereço = logradouro + ', ' + uf;
-
-  
-
+      let dNow = new Date();
+      
+      let localDate = `${dNow.getFullYear()}/${(dNow.getMonth()+1)}/${(dNow.getMonth()+1)}`
+      
+       const id = crypto.randomBytes(4).toString('HEX');
+       const spot = await connection('spots')
+       .insert({
+         id,
+         name: req.title, 
+         description: req.description,
+         price: req.price,
+         product_img: request.files[0].filename,
+         date: localDate,
+         user_id
+       })
   
 
     //    const id = crypto.randomBytes(4).toString('HEX');
@@ -108,7 +117,11 @@ try {
 
     // console.log(spot);
     
-    // return response.json(spot);
+   return response.json({
+     sucess: true,
+     data: req,
+    
+   });
     
     }
 
